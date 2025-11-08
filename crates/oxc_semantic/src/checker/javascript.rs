@@ -99,8 +99,11 @@ pub const STRICT_MODE_NAMES: Set<&'static str> = phf_set! {
 };
 
 pub fn check_identifier(name: &str, span: Span, ctx: &SemanticBuilder<'_>) {
-    // ts module block allows revered keywords
-    if ctx.current_scope_flags().is_ts_module_block() {
+    // reserved keywords are allowed in ambient contexts
+    if ctx.source_type.is_typescript_definition()
+        || ctx.current_scope_flags().is_ts_module_block()
+        || is_current_node_declare_binding(ctx)
+    {
         return;
     }
     if name == "await" {
@@ -118,6 +121,21 @@ pub fn check_identifier(name: &str, span: Span, ctx: &SemanticBuilder<'_>) {
     if ctx.strict_mode() && STRICT_MODE_NAMES.contains(name) {
         ctx.error(reserved_keyword(name, span));
     }
+}
+
+fn is_current_node_declare_binding(ctx: &SemanticBuilder<'_>) -> bool {
+    matches!(ctx.nodes.kind(ctx.current_node_id), AstKind::BindingIdentifier(_))
+        && ctx
+            .nodes
+            .ancestor_kinds(ctx.current_node_id)
+            .find_map(|ancestor| {
+                if let AstKind::VariableDeclaration(decl) = ancestor {
+                    Some(decl.declare)
+                } else {
+                    None
+                }
+            })
+            .unwrap_or_default()
 }
 
 fn unexpected_identifier_assign(x0: &str, span1: Span) -> OxcDiagnostic {
