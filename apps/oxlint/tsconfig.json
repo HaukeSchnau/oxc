@@ -7,9 +7,12 @@
     "noImplicitAny": true,
     "skipLibCheck": true
   },
+  "include": [
+    "src-js",
+    "test/**/*.ts"
+  ],
   "exclude": [
-    "node_modules",
-    "fixtures",
-    "test/fixtures/*/files"
+    "test/fixtures",
+    "fixtures"
   ]
 }
