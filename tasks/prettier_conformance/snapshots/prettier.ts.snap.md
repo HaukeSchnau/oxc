@@ -7,7 +7,7 @@ ts compatibility: 499/598 (83.44%)
 | jsx/comments/eslint-disable.js | 💥 | 88.89% |
 | jsx/fbt/test.js | 💥 | 84.06% |
 | jsx/fragment/fragment.js | 💥 | 98.61% |
-| jsx/ignore/jsx_ignore.js | 💥 | 83.64% |
+| jsx/ignore/jsx_ignore.js | 💥 | 88.89% |
 | jsx/jsx/array-iter.js | 💥💥💥💥 | 79.41% |
 | jsx/jsx/attr-comments.js | 💥💥💥💥 | 93.55% |
 | jsx/jsx/expression.js | 💥💥💥💥 | 96.69% |
@@ -16,8 +16,8 @@ ts compatibility: 499/598 (83.44%)
 | jsx/jsx/quotes.js | 💥💥💥💥 | 79.41% |
 | jsx/optional-chaining/optional-chaining.jsx | 💥 | 86.89% |
 | jsx/single-attribute-per-line/single-attribute-per-line.js | 💥✨ | 43.37% |
-| jsx/stateless-arrow-fn/test.js | 💥 | 95.32% |
-| jsx/text-wrap/test.js | 💥 | 98.68% |
+| jsx/stateless-arrow-fn/test.js | 💥 | 98.82% |
+| jsx/text-wrap/test.js | 💥 | 99.21% |
 | typescript/angular-component-examples/15934-computed.component.ts | 💥💥 | 76.92% |
 | typescript/angular-component-examples/15934.component.ts | 💥💥 | 53.85% |
 | typescript/angular-component-examples/test.component.ts | 💥💥 | 41.18% |
